@@ -1,5 +1,7 @@
 import { Request, Response } from 'express';
+import createServer from './src/app';
 
+const app = await createServer();
 const port = process.env.PORT;
 
 app.get('/', (req: Request, res: Response) => {
