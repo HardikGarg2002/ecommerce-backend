@@ -12,9 +12,8 @@ const appVersion = CommonVariables.APP_VERSION;
 app.get('/', (req: Request, res: Response) => {
 	res.setHeader('Content-Type', 'text/html');
 	const response = {
-		message: 'Welcome to iTuple Product Service',
+		message: 'Welcome to aryaCrafts Product Service',
 		environment,
-		service,
 		appVersion,
 		dbconnected: dbUtils.isMongoDBConnected(),
 	};

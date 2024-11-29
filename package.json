@@ -5,7 +5,7 @@
 	"main": "dist/index.js",
 	"scripts": {
 		"build": "tsc",
-		"start": "set APP_VERSION=%npm_package_version% npm run build && node dist/index.js",
+		"start": "npm run build && node dist/index.js",
 		"dev": "set APP_VERSION=%npm_package_version% && nodemon --watch src/**/*.ts --exec ts-node src/index.ts",
 		"devmac": "nodemon --watch 'src/**/*.ts' --exec ts-node src/index.ts",
 		"test": "jest --detectOpenHandles"
