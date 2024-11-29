@@ -1,0 +1,112 @@
+@url= http://localhost:6001/api
+@token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NTcxYTNiMjA0ZDI3YTU2MmRhZDJkODYiLCJpYXQiOjE3MDQxNzI5NTAsImV4cCI6MTcwNzczOTM1MH0.Mf3Ngu9EwpqnG8As_JtEbje8TRWa1zK9FICscBGgvdc
+
+@variantId=659bb3e133ac4677b9a5bb62
+
+###
+# Test Case 1: Add multiple products to a variant
+POST {{url}}/variants/{{variantId}}/products
+Content-Type: application/json
+Authorization: Bearer {{token}}
+  
+{
+  "products": [
+    {
+      "_id": "product1",
+      "value": "Product 1",
+      "quantity": 10,
+      "measure": "units"
+    },
+    {
+      "_id": "product2",
+      "value": "Product 2",
+      "quantity": 15,
+      "measure": "units"
+    }
+  ]
+}
+
+###
+# Test Case 2: Add multiple products with duplicate IDs to a variant
+POST {{url}}/variants/{{variantId}}/products
+Content-Type: application/json
+Authorization: Bearer {{token}}
+  
+{
+    
+  "products": [
+    {
+      "_id": "6571a9d5903588ef0c77ef85",
+      "value": "medium"
+      
+    }
+  ]
+}
+
+###
+
+# Test Case 3: Add multiple products with missing required fields
+POST {{url}}/variants/{{variantId}}/products
+Content-Type: application/json
+Authorization: Bearer {{token}}
+  
+{
+  "products": [
+    {
+      "_id": "product1",
+      "quantity": 10,
+      "measure": "units"
+    },
+    {
+      "_id": "product2",
+      "value": "Product 2",
+      "quantity": 15
+    }
+  ]
+}
+
+###
+# Test Case 4: Add multiple products with an empty variant ID
+POST {{url}}/variants//products
+Content-Type: application/json
+Authorization: Bearer {{token}}
+  
+{
+  "products": [
+    {
+      "_id": "product1",
+      "value": "Product 1",
+      "quantity": 10,
+      "measure": "units"
+    },
+    {
+      "_id": "product2",
+      "value": "Product 2",
+      "quantity": 15,
+      "measure": "units"
+    }
+  ]
+}
+
+###
+# Test Case 5: Add multiple products with an invalid variant ID
+POST {{url}}/variants/invalidVariantId/products
+Content-Type: application/json
+Authorization: Bearer {{token}}
+  
+{
+  "products": [
+    {
+      "_id": "product1",
+      "value": "Product 1",
+      "quantity": 10,
+      "measure": "units"
+    },
+    {
+      "_id": "product2",
+      "value": "Product 2",
+      "quantity": 15,
+      "measure": "units"
+    }
+  ]
+}

@@ -1,0 +1,46 @@
+@url= http://localhost:6001/api
+# @url =https://audit-dev.up.railway.app/api
+@token= eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NTQzN2QwZjg1NjVmNThjMTM2NDM5MzgiLCJpYXQiOjE3MDAyMDc5ODAsImV4cCI6MTcwMzc3NDM4MH0.ln_yANoFh7NzaoRFhs41CevNPYp4QDK9DsL-NTMOBRI
+
+@id=656d8b000bd115f46cd0c35e
+
+GET {{url}}/hsns
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+
+###
+GET {{url}}/hsns/search?searchText=ing
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+###
+POST {{url}}/hsns
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+    "code":" Hsn01  ",
+    "desc":"i am testing",
+    "gst":5
+}
+
+###
+PATCH {{url}}/hsns/{{id}}
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+    "code":"  Hsn01  ",
+    "reason":"i am testing"
+}
+
+###
+PATCH {{url}}/hsns/{{id}}/status
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+    "is_active":true,
+    "reason":"i am testing"
+}

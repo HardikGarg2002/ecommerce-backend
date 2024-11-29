@@ -1,0 +1,55 @@
+@url= http://localhost:6001/api
+# @url =https://audit-dev.up.railway.app/api
+@token= eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NWMwYWNlZjk2YTI3N2IwOGNmOGEyNDYiLCJpYXQiOjE3MDcxMzE0NzQsImV4cCI6MTcxMDY5Nzg3NH0.piRR-bxvPFOkw8H3mOsMBWcaPUGp3gHZgwACwH5V9VI
+@id=65c19cac6a2765e6916ea466 
+
+
+POST {{url}}/relatedproducts
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+     "related":[
+        "65b104cc1713ac56c34b80f4",
+       "65b22224c6e6054537d42cc8"
+    ]
+   
+}
+
+###
+GET {{url}}/relatedproducts/{{id}}
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+###
+POST  {{url}}/relatedproducts/{{id}}
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+    "related":[
+        {"_id":"6571a9d5903588ef0c77ec85",
+        "sort":145},
+        {"_id":"6571aa3c903588ef0c77ef82"}]
+    
+}
+###
+DELETE {{url}}/relatedproducts/{{id}}/product/ 6571a9d5903588ef0c77ef85
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+    "reason":"here i am testing"
+    
+}
+###
+PATCH {{url}}/relatedproducts/{{id}}
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+    "relproduct_id":"  65701dd1bcc77cdd5ab8cc9e ",
+    "sort":24,
+    "reason":"here i am testing"
+    
+}

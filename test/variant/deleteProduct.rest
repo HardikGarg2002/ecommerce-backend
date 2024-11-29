@@ -1,0 +1,107 @@
+@url= http://localhost:6001/api
+@token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NTcxYTNiMjA0ZDI3YTU2MmRhZDJkODYiLCJpYXQiOjE3MDQ3MDI0ODgsImV4cCI6MTcwODI2ODg4OH0.U1pxTfJgOUxs_WyFzNeF4WMgX8-Xlq_wNH386UluhnQ
+
+@productId = 6571aa3c903588ef0c77ef92
+# @productId = 65940e7d53a82ba67703bebc
+@variantId=659bb3e133ac4677b9a5bb62
+
+###
+GET {{url}}
+Authorization: Bearer {{token}}
+
+###
+GET {{url}}/variants/{{variantId}}
+Authorization: Bearer {{token}}
+
+# Test Case 1: Try to remove a product with an invalid variant ID
+###
+DELETE {{url}}/variants/invalidVariantId
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+# Test Case 2: Try to remove a product with an empty product ID
+###
+DELETE {{url}}/variants/659505f940de4c945cec2697/products/k
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+    "reason":"testing deletion of product"
+}
+
+# Test Case 3: Try to remove a product with an incorrect HTTP method
+###
+GET {{url}}/variants/{{variantId}}/products/{{productId}}
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+    "reason":"testing deletion of product"
+}
+
+# Test Case 4: Try to remove a product with missing Authorization header
+###
+DELETE {{url}}/variants/{{variantId}}/products/{{productId}}
+Content-Type: application/json
+
+{
+    "reason":"testing deletion of product"
+}
+
+# Test Case 5: Try to remove a product with an invalid Authorization token
+###
+DELETE {{url}}/variants/{{variantId}}/products/{{productId}}
+Content-Type: application/json
+Authorization: Bearer invalidToken
+
+{
+    "reason":"testing deletion of product"
+}
+
+# Test Case 6: Try to remove a product without providing an authorization token
+###
+DELETE {{url}}/variants/{{variantId}}/products/{{productId}}
+Content-Type: application/json
+
+{
+    "reason":"testing deletion of product"
+}
+
+# Test Case 7: Try to remove a product with a non-existing variant ID
+###
+DELETE {{url}}/variants/nonExistingVariantId/products/{{productId}}
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+    "reason":"testing deletion of product"
+}
+
+# Test Case 8: Try to remove a product that doesn't exist in the variant
+###
+DELETE {{url}}/variants/{{variantId}}/products/nonExistingProductId
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+    "reason":"testing deletion of product"
+}
+
+# Test Case 9: Try to remove a product with an empty variant ID
+###
+DELETE {{url}}/variants//products/{{productId}}
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+    "reason":"testing deletion of product"
+}
+
+###
+DELETE {{url}}/variants/{{variantId}}/products/{{productId}}
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+    "reason":"testing deletion of product"
+}

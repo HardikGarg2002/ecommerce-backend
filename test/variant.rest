@@ -1,0 +1,63 @@
+@url= http://localhost:6001/api
+@token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NTcxYTNiMjA0ZDI3YTU2MmRhZDJkODYiLCJpYXQiOjE3MDQxNzI5NTAsImV4cCI6MTcwNzczOTM1MH0.Mf3Ngu9EwpqnG8As_JtEbje8TRWa1zK9FICscBGgvdc
+@type=Unit
+@type=Model
+@type=Color
+@type=Size
+# @id=6595033e40de4c945cec2694
+@id=6597f1a35e906550c95e1b70
+
+###
+GET {{url}}
+Authorization: Bearer {{token}}
+
+###
+GET {{url}}/variants/{{id}}
+Authorization: Bearer {{token}}
+
+###
+## Create Variant
+POST {{url}}/variants
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+  "type": "UNIT",
+  "products": [
+    {
+      "_id": "6571ab874b0ec1b9b7e1f736",
+      "value": "blue"
+    },
+    {
+      "_id": "6571b46722d30bd86e0b2ce7",
+      "value": "red"
+    }
+  ]
+}
+
+###
+## Create Variant 
+POST {{url}}/variants
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+  "type": "UNIT",
+  "products": [
+    {
+      "_id": "6594f5bebf3402f61d18ff",
+      "value": "#000000"
+    },
+    {
+      "_id": "65940e7d53a82b7703bebc",
+      "value": "#0000FF"
+    }
+  ]
+}
+
+
+###
+## Create Variant 
+POST {{url}}/variants
+Content-Type: application/json
+Authorization: Bearer {{token}}

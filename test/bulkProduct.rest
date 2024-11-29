@@ -1,0 +1,32 @@
+@url = http://localhost:6001
+@token =eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NjBiYmJmYWMwYzhlNmI1ZmM5ZWMzZTQiLCJpYXQiOjE3MTIwNDUwNTAsImV4cCI6MTcxNTYxMTQ1MH0.Ko7xSVZCir1pqBFeKzB5-02UebWg9dL5t8ePGHpsv0c
+
+POST {{url}}/api/bulk/products
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+    "products": [
+       {
+    "name": "Oneplus earphones testing",
+    "desc": "This is a sample product description.",
+    "category_code":"MEAT",
+    "subcategory_code":"FISH",
+    "sku": "SP0040",
+    "hsn_code": "0102.21.90",
+    "sort": 10,
+    "prices":{
+        "mrp": 500,
+        "pbt": 454,
+        "taxpct":10
+    },
+    "unit":{
+        "quantity":1,
+        "measure":"NOS"
+    },
+    "images":{
+        "primary":"https://res.cloudinary.com/dbki9mbxu/image/upload/v1701248457/gmp60lbkleeg3zu39bbk.jpg"
+    }
+}
+    ]
+}

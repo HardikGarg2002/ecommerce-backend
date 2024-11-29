@@ -1,0 +1,65 @@
+@url= http://localhost:6001
+# @url =https://audit-dev.up.railway.app/api
+@token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NTA4MjdkZGRkM2Q5MjdiMzkwOTEwY2QiLCJpYXQiOjE3MDM1Njg0MjMsImV4cCI6MTcwNzEzNDgyM30.v82algiEO1UEtqRYjwkGmNBSM1B1GCxBGPfyMe6472c
+@id=6571a743089aca6ec8e4096e
+###
+GET {{url}}
+
+###
+GET {{url}}/api/subcategories
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+###
+GET {{url}}/api/subcategories/search?searchText=fruits
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+
+###
+POST {{url}}/api/subcategories
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+  "name": "Haircare",
+  "desc": "Achieve healthy and beautiful hair with our specialized haircare products.",
+  "code": "haircare",
+  "img_url": "https://example.com/haircare.jpg",
+  "sort": 20
+}
+
+###
+GET {{url}}/api/subcategories/{{id}}
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+
+###
+PATCH {{url}}/api/subcategories/{{id}}
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{   "name":"",
+    "desc": "",
+    "sort":0,
+    "img_url":"",
+    "category_code":"123",
+    "reason":"i want to test "
+}
+
+
+###
+PATCH {{url}}/api/subcategories/{{id}}/status
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+    "is_active":   false ,
+    "reason":"i want to test "   
+}
+
+###
+DELETE {{url}}/api/subcategories/{{id}}
+Content-Type: application/json
+Authorization: Bearer {{token}}

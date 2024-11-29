@@ -1,0 +1,64 @@
+@url = http://localhost:6001
+@token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NWU4NDRiZTczMmU2NjM5NTkzNGVlOTEiLCJpYXQiOjE3MTAxMzM0NTksImV4cCI6MTcxMzY5OTg1OX0.amPv8NDr1kJpDLF7KEsU1FjmNOs0c2CjOjdcpXHWy64
+@addressId=65efff1163d4470e9ccd8876
+### POST a new product
+GET {{url}}/api/consumer/customer
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+
+### 
+POST {{url}}/api/consumer/customer/address
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+  "name": "hardik",
+  "contact_phone": "9215603085",
+  "address_type": "WORK",
+  "other_address_type": "",
+  "address": "addreess 2",
+  "landmark": "",
+  "locality": "Vaishali Nagar",
+  "city": "Jaipur",
+  "state": "Rajasthan",
+  "country": "India",
+  "pincode": 302021
+}
+
+###
+DELETE {{url}}/api/consumer/customer/address/{{addressId}}
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+###
+PATCH {{url}}/api/consumer/customer/address/{{addressId}}
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+  "name": "hardik garg",
+  "contact_phone": "9215503085",
+  "address_type": "HOME",
+  "address": "address 2-1",
+  "landmark": "",
+  "locality": "Vaishali Nagar",
+  "city": "Jaipur",
+  "state": "Rajasthan",
+  "country": "India",
+  "pincode": 302021
+}
+
+###
+POST {{url}}/api/consumer/customer
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+    
+    "auth_id": "65e728e5c3557f0d31eb0611",
+    "name": "DB",
+    "mobile": "9811695657"
+    
+    
+}

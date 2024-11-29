@@ -1,0 +1,31 @@
+
+@url= http://localhost:6001
+# @url =https://audit-dev.up.railway.app/api
+@token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NWE5MDhiZDUwODI2ZWQ0YmUzOTI4NDUiLCJpYXQiOjE3MDYwODM1MzMsImV4cCI6MTcwOTY0OTkzM30.VvxdMiOoTHa6ojkkH51dgebZPUbu17i33xM1RaLoKBA
+@id=655de80d431b386eaffa4687
+
+# 655dd0bcb1fcfce206c8a526
+# 655dd0edb1fcfce206c8a52c
+# 655dd0ffb1fcfce206c8a532
+###
+GET {{url}}
+
+
+###
+GET {{url}}/metrics
+Content-Type: application/json
+
+###
+GET {{url}}/api/consumer/banners
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+###
+GET {{url}}/api/banners/{{id}}
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+###
+GET {{url}}/api/consumer/products?filters
+Content-Type: application/json
+Authorization: Bearer {{token}}

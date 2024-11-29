@@ -1,0 +1,220 @@
+@url = http://localhost:6001
+@token =eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NjBiYmJmYWMwYzhlNmI1ZmM5ZWMzZTQiLCJpYXQiOjE3MTIwNDUwNTAsImV4cCI6MTcxNTYxMTQ1MH0.Ko7xSVZCir1pqBFeKzB5-02UebWg9dL5t8ePGHpsv0c
+@token =eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NWU3MzYyNmMzNTU3ZjBkMzFlYjA2NTQiLCJpYXQiOjE3MTIwMzQyNTQsImV4cCI6MTcxNTYwMDY1NH0.C2QzoTKj8SLCNgcMzzAKUV0HgFj4u5BwnLyG8PzULhs
+@id = 65b76674a88039406c4684f7
+@relatedproduct_id=65b76674a88039406c4684f7
+
+@alias_id=6595384b518606e249e49e81
+
+### GET all products
+GET {{url}}/api/products/{{id}}
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+### POST a new product
+POST {{url}}/api/products
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+    "name": "Oneplus earphones testing",
+    "desc": "This is a sample product description.",
+    "category_code":"MEAT",
+    "subcategory_code":"FISH",
+    "sku": "SP0038",
+    "hsn_code": "0102.21.90",
+    "subcategory_code":"ONG",
+    "sku": "SP003",
+    "sort": 10,
+    "prices":{
+        "mrp": 500,
+        "pbt": 454,
+        "taxpct":10
+    },
+    "unit":{
+        "quantity":1,
+        "measure":"NOS"
+    },
+    "features":[
+        {
+            "code":"ITEMWEIGHT","value":"50gm"
+        },{
+             "code":"MANUFACTURE","value":"Oneplus"
+        }
+    ],
+    "images":{
+        "primary":"https://res.cloudinary.com/dbki9mbxu/image/upload/v1701248457/gmp60lbkleeg3zu39bbk.jpg"
+    },
+    "unit":{
+        "quantity":2,
+    "measure":"kilogram"
+    }
+}
+
+### POST a new product
+POST {{url}}/api/products
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+    "name": "Oneplus earphones",
+    "desc": "This is a sample product description.",
+    "category_code":"HOMEOFFICE",
+    "subcategory_code":"APPLIANCE",
+    "sku": "AP003",
+    "hsn_code": "0102.21.90",
+    "sort": 10,
+    "prices":{
+        "mrp": 500,
+        "pbt": 400,
+        "taxpct":10
+    },
+    "images":{
+        "primary":"https://res.cloudinary.com/dbki9mbxu/image/upload/v1701248457/gmp60lbkleeg3zu39bbk.jpg"
+    },
+    "unit":{
+        "quantity": true
+    }
+}
+
+### GET a specific product by ID
+GET {{url}}/api/products/{{id}}
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+### GET a specific product by ID
+GET {{url}}/api/products/search?searchText=sam
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+
+### PATCH/update a product by ID
+PATCH {{url}}/api/products/{{id}}
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+    "reason":"testing the product",
+    "sort": 11
+}
+
+### PATCH/update the status of a product by ID
+PATCH {{url}}/api/products/{{id}}/status
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+    "is_active": true,
+    "reason": "Deactivating the product"
+}
+
+### PATCH/update the price details of a product by ID
+PATCH {{url}}/api/products/{{id}}/price
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+    "reason": "Updating price details",
+    "prices": {
+        "mrp": 400
+    },
+    "hsn_code":"0101.90.90"
+
+}
+
+### PATCH/update the offer status of a product by ID
+PATCH {{url}}/api/products/{{id}}/offer
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+    "reason": "Updating offer status",
+
+        "offer": true
+
+}
+
+### PATCH/update the out-of-stock status of a product by ID
+PATCH {{url}}/api/products/{{id}}/oos
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+    "oos": true
+}
+
+###
+POST {{url}}/api/products/{{id}}/images
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+   "images":{
+        "additional":[" https://res.cloudinary.com/dbki9mbxu/image/upload/v1701248457/gmp60lbkleeg3zu39bbka.jpg  "]
+   }
+}
+###
+POST {{url}}/api/products/{{id}}/aliases
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+    "aliases": ["65953845518606e249e49e81"]
+}
+
+###
+DELETE  {{url}}/api/products/{{id}}/aliases/6595384b518606e249e49e83
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+    "reason":"i want to remove alias from the product"
+}
+
+
+
+
+
+
+### ADd features to the product 
+POST {{url}}/api/products/{{id}}/features
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+    "features":[
+        {"code":"HEIGHT","value":"157 cm"}
+    ]
+}
+
+### ADd features to the product 
+DELETE  {{url}}/api/products/{{id}}/features/HEIGHT
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+    "reason":" i want to remove the feature from the product"
+}
+
+
+### GET a specific product by ID
+GET {{url}}/api/products/{{id}}
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+
+
+
+###
+POST {{url}}/api/products/{{id}}/relatedProducts
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+    "relatedproducts": ["65b76674a88039406c4684f7"]
+    
+}
+
+###
+DELETE {{url}}/api/products/{{id}}/relatedProducts/{{relatedproduct_id}}
+Authorization: Bearer {{token}}

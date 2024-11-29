@@ -1,0 +1,46 @@
+@url= http://localhost:6001/api
+# @url =https://audit-dev.up.railway.app/api
+@token= eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NTQzN2QwZjg1NjVmNThjMTM2NDM5MzgiLCJpYXQiOjE3MDAyMDc5ODAsImV4cCI6MTcwMzc3NDM4MH0.ln_yANoFh7NzaoRFhs41CevNPYp4QDK9DsL-NTMOBRI
+
+@id=65683ba5ef9b39610d0a1d82
+###
+GET {{url}}
+
+###
+POST {{url}}/tags
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+    "text":"winter shirts1"
+}
+
+###
+GET {{url}}/tags?filters[text][$in]=hotred,magentared
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+###
+GET {{url}}/tags/search?searchText=red&sort=text:asc
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+###
+GET {{url}}/tags/{{id}}
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+###
+GET {{url}}/tags/search?searchText=red
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+###
+PATCH {{url}}/tags/{{id}}/status
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+    "is_active":false,
+    "reason":"i want to deacive it"
+}

@@ -1,0 +1,82 @@
+
+@url= http://localhost:6001
+@token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NTA4MjdkZGRkM2Q5MjdiMzkwOTEwY2QiLCJpYXQiOjE3MDQ3ODU0MzgsImV4cCI6MTcwODM1MTgzOH0.sActscFHbfGnsI1QyehxdC42kLE5g0EbFCkq_jy-PaY
+@id=656043c6a46dfdc3c727eeae
+###
+GET {{url}}
+
+###
+GET {{url}}/api/features
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+###
+GET {{url}}/api/features/search?searchText=model
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+
+###
+POST {{url}}/api/features
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{   "name":"product height",
+    "code":"height",
+    "desc": "height of the product",
+    "img":" https://res.cloudinary.com/dbki9mbxu/image/upload/v1697019966/blyrx1fzttkrwjzvl9nh.jpg ",
+    "sort":50,
+    "type": "elec"
+   }
+
+
+###
+GET {{url}}/api/features/{{id}}
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+
+###
+PATCH {{url}}/api/features/{{id}}
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+  "sort": 87,
+  "reason":"i want to update"
+}
+
+###
+PATCH {{url}}/api/features/{{id}}/status
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+    "active":   true ,
+    "reason":"i want to test "   
+}
+
+###
+DELETE {{url}}/api/features/{{id}}
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+  "reason":"i want ot remove this feature"
+}
+
+
+
+
+###
+POST {{url}}/api/features
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{   "name":"energy",
+    "code":"energy",
+    "desc": "energy in kcal",
+    "img":" https://res.cloudinary.com/dbki9mbxu/image/upload/v1697019966/blyrx1fzttkrwjzvl9nh.jpg ",
+    "sort":120,
+    "type": "food"
+   }

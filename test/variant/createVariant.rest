@@ -1,0 +1,207 @@
+
+@url= http://localhost:6001/api
+@token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NTcxYTNiMjA0ZDI3YTU2MmRhZDJkODYiLCJpYXQiOjE3MDQ3MDI0ODgsImV4cCI6MTcwODI2ODg4OH0.U1pxTfJgOUxs_WyFzNeF4WMgX8-Xlq_wNH386UluhnQ
+@id=6597f1a35e906550c95e1b70
+
+###
+GET {{url}}
+Authorization: Bearer {{token}}
+
+###
+GET {{url}}/variants/{{id}}
+Authorization: Bearer {{token}}
+
+# Case 1: Create a Variant with Valid Data
+###
+POST {{url}}/variants
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+  "type": "UNIT",
+  "products": [
+    {
+      "_id": "6571a9d5903588ef0c77ef85",
+      "value":"",
+      "quantity": 10,
+      "measure": "kg"
+    },
+    {
+      "_id": "6594f5bebf3402f61d18fddf",
+      "quantity": 11,
+      "measure": "kg"
+    }
+  ]
+}
+
+###
+POST {{url}}/variants
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+  "type": "SIZE",
+  "products": [
+    {
+      "_id": "6571b9d5903588ff0c77ef89",
+      "value":"small"
+    },
+    {
+      "_id": "6571a7d5903588ef0c77ef85",
+      "value": "medium"
+    }
+  ]
+}
+
+###
+POST {{url}}/variants
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+  "type": "COLOR",
+  "products": [
+    {
+      "_id": "65940e7d53a82ba67703bebc",
+      "value":"#0000FF"
+    },
+    {
+      "_id": "6594f5bebf3402f61d18fddf",
+      "value":"#000000"
+    }
+  ]
+}
+
+# Case 2: Create a Variant with Minimum Data
+###
+POST {{url}}/variants
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+  "type": "Unit"
+}
+
+
+# Case 3: Create a Variant with Valid Data and No Products
+###
+POST {{url}}/variants
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+  "type": "UNIT",
+  "products":[]
+}
+
+
+
+
+# Negative Test Cases:
+
+# Case 4: Attempt to Create a Variant with Missing Type
+###
+POST {{url}}/variants
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+  "products": [
+    {
+      "_id": "product1",
+      "value": "Product 1",
+      "quantity": 10,
+      "measure": "units"
+    }
+  ]
+}
+
+# Case 5: Attempt to Create a Variant with Invalid Type
+###
+POST {{url}}/variants
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+  "type": "InvalidType",
+  "products": [
+    {
+      "_id": "product1",
+      "value": "Product 1",
+      "quantity": 10,
+      "measure": "units"
+    }
+  ]
+}
+
+# Case 6: Attempt to Create a Variant with Duplicate Product IDs
+###
+POST {{url}}/variants
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+  "type": "Unit",
+  "products": [
+    {
+      "_id": "product1",
+      "value": "Product 1",
+      "quantity": 10,
+      "measure": "units"
+    },
+    {
+      "_id": "product1",  
+      "value": "Duplicate Product",
+      "quantity": 5,
+      "measure": "units"
+    }
+  ]
+}
+
+# Case 7: Attempt to Create a Variant with Missing Product ID
+###
+POST {{url}}/variants
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+  "type": "Unit",
+  "products": [
+    {
+      "quantity": 10,
+      "measure": "units"
+    }
+  ]
+}
+
+###
+POST {{url}}/variants
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+  "type": "BRAND",
+  "products": [
+    {
+      "value": "black"
+    }
+  ]
+}
+
+# Case 8: Attempt to Create a Variant with Missing Product Quantity
+###
+POST {{url}}/variants
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+  "type": "UNIT",
+  "products": [
+    {
+      "_id": "product1",
+      "measure": "units"
+    }
+  ]
+}
+
+

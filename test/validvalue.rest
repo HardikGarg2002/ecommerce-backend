@@ -1,0 +1,179 @@
+
+@url= http://localhost:6001
+@token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NTA3ZGI5N2RkM2Q5MjdiMzkwOTBmZmMiLCJpYXQiOjE2OTkyNTkxOTEsImV4cCI6MTcwMjgyNTU5MX0.GTfOMoyQIJ_ssaglAitIdQ5YN_YB-27qWP5Nk2MJ5u4
+@type=feature
+@id=655489f38fd97019f57d3971
+@key=grocery
+
+###
+GET {{url}}
+
+
+////////////////////get all valid values /////////////////
+###
+GET {{url}}/api/validvalues
+Authorization: Bearer {{token}}
+
+
+//////////////////get values of a valid value type /////////////////////(fetch=all) for all values
+###
+GET {{url}}/api/validvalues/{{type}}
+Authorization: Bearer {{token}}
+
+/////////////////////create a new valid value /////////////////////////////////
+###
+POST {{url}}/api/validvalues
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{   "type":"feature",
+"label":"features"
+   
+        }
+
+//// edit a valid value label//////////////////////////
+###
+PATCH {{url}}/api/validvalues/{{id}}
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+    "label":"features",
+    "reason":"i want to change"
+}
+
+
+###
+POST {{url}}/api/validvalues/{{id}}/values
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+    "values":[
+        {
+            "key":"ELEC",
+            "label":"electronics",
+            "sort":50
+        },
+         {
+            "key":"dairy",
+            "label":"dairy"
+        },
+         {
+            "key":"fnv",
+            "label":"fruits and vegetables",
+            "sort":10
+        },
+         {
+            "key":"food",
+            "label":"food",
+            "sort":60
+        },
+         {
+            "key":"cloth",
+            "label":"cloth",
+            "sort":400
+        }
+    ],
+    "reason":" iwant to add a value"
+}
+
+
+
+
+
+###
+GET {{url}}/api/validvalues/{{type}}/{{key}}
+Authorization: Bearer {{token}}
+
+
+###
+PATCH {{url}}/api/validvalues/{{id}}/{{key}}
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+    "value":
+    {  "label":"groceries",
+       "sort":100
+    },
+    "reason":"i want to update"
+}
+
+
+###
+PATCH {{url}}/api/validvalues/{{id}}/{{key}}/status
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+   "is_active": false,
+    "reason":"i want to change the status"
+
+}
+
+
+###
+DELETE {{url}}/api/validvalues/{{type}}/{{key}}
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+    "reason":"i want to delete"
+}
+
+
+
+
+
+
+
+//////////////////////////////////////city valid testing value ////////////////////////////////
+###
+POST {{url}}/api/validvalues
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{   "type":"city",
+"label":"cities"
+   
+        }
+
+
+
+
+
+###
+POST {{url}}/api/validvalues/65548eb94ca08d15b0e6fdeb/values
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+    "values":[
+        {
+            "key":"CHD",
+            "label":"chandigarh",
+            "sort":50
+        },
+         {
+            "key":"kol",
+            "label":"kolkata"
+        },
+         {
+            "key":"pnp",
+            "label":" panipat",
+            "sort":200
+        },
+         {
+            "key":"bom",
+            "label":"mumbai",
+            "sort":60
+        },
+         {
+            "key":"del",
+            "label":"delhi",
+            "sort":40
+        }
+    ],
+    "reason":" iwant to add a value"
+}

@@ -1,0 +1,72 @@
+
+@url= http://localhost:6001
+# @url =https://audit-dev.up.railway.app/api
+@token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NTA4MjdkZGRkM2Q5MjdiMzkwOTEwY2QiLCJpYXQiOjE3MDQ4NjY4NDMsImV4cCI6MTcwODQzMzI0M30.zGc36QHFHfwmwaWOEUkHZ6iZ4yqgPLhk59XH81WORi4
+@id=6571a2d5089aca6ec8e408f5
+###
+GET {{url}}
+
+###
+GET {{url}}/api/categories
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+###
+GET {{url}}/api/categories/search?searchText=fresh milk
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+
+###
+POST {{url}}/api/categories
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{   "name":" PSASB",
+    "desc": " extra calory meal macaDA ",
+    "code":"AMISSA",
+    "img_url":" https://res.cloudinary.com/dbki9mbxu/image/upload/v1697019966/blyrx1fzttkrwjzvl9nh.jpg ",
+    "sort":6
+}
+
+
+###
+GET {{url}}/api/categories/{{id}}
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+###
+GET {{url}}/api/categories
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+###
+PATCH {{url}}/api/categories/{{id}}
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+    "name": "",
+    "img_url": "https://res.cloudinary.com/dbki9mbxu/image/upload/v1698993303/gvkyzjineen9qddwjwek.jpg",
+    "sort": 1,
+    "reason": "test reason"
+}
+###
+PATCH {{url}}/api/categories/{{id}}/status
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+    "is_active":   false ,
+    "reason":"i wantss to update status"
+}
+
+###
+DELETE {{url}}/api/categories/{{id}}
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+    
+    "reason":"i wantss to delete"
+}

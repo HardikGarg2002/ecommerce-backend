@@ -1,0 +1,222 @@
+@url = http://localhost:6001
+# @url = https://productsbackend-dev-itpl.up.railway.app
+@token =eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NWU3MzYyNmMzNTU3ZjBkMzFlYjA2NTQiLCJpYXQiOjE3MTIwMzQyNTQsImV4cCI6MTcxNTYwMDY1NH0.C2QzoTKj8SLCNgcMzzAKUV0HgFj4u5BwnLyG8PzULhs
+@id = 65e37c003aca764552c802ec
+
+
+###
+GET {{url}}/metrics
+Content-Type: application/json
+
+
+
+###
+GET {{url}}/api/consumer/orders/{{id}}
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+
+### Create a new Order
+POST {{url}}/api/consumer/orders
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+    "total_order_amount": 37,
+    "total_sp_amount": 27,
+    "total_tax_amount": 1.35,
+    "currency":"INR",
+    "other_charges": {
+        "handling_cost": 10,
+        "delivery_charges": 10
+    },
+    "discounts": {
+        "code": "DISC10",
+        "amount": 10
+    },
+    
+    "products": [
+        {
+            "product_id": "65b104cc1713ac56c34b80f4",
+            "product_name": "Test Product",
+            "quantity": 1,
+            "unit_sp": 27,
+            "sku": "SKUAMUL001",
+            "tax_amount": 1.35,
+            "subtotal": 27
+        }
+    ],
+    "shipping": {
+        "name": "Test Name",
+        "address": "Test Address",
+        "tracking_no": "123456"
+    },
+    "orderNotes": "Test Order1"
+    
+}
+
+### Positive Test Cases ###
+
+# Create Order with OOS Amul Taaza Toned Fresh Milk
+### Create a new Order
+POST {{url}}/api/consumer/orders
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+  "total_order_amount": 54,
+  "total_sp_amount": 54,
+  "total_tax_amount": 0,
+  "products": [
+    {
+      "product_id": "65b22224c6e6054537d42cc8",
+      "product_name": "Amul Taaza Toned Fresh Milk",
+      "quantity": 2,
+      "unit_sp": 27,
+      "hsn": "04012000",
+      "tax_amount": 0,
+      "subtotal": 54
+    }
+  ],
+  "currency": "INR",
+  "shipping": {
+    "name": "John Doe",
+    "address": "123, Street Name, City, Country",
+    "trackingNumber": "1234567890"
+  },
+  "orderNotes": "Deliver in the morning."
+}
+
+###
+# Create Order with Dettol Hand Sanitizer
+### Create a new Order
+POST {{url}}/api/consumer/orders
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+  "total_order_amount": 50,
+  "total_sp_amount": 50,
+  "total_tax_amount": 4,
+  "products": [
+    {
+      "product_id": "65bc8367caf694dd9f951d5d",
+      "product_name": "Dettol Hand Sanitizer",
+      "quantity": 2,
+      "unit_sp": 25,
+      "hsn": "212673893",
+      "tax_amount": 4,
+      "subtotal": 50
+    }
+  ],
+  "currency": "INR",
+  "shipping": {
+    "name": "Jane Doe",
+    "address": "456, Street Name, City, Country",
+    "trackingNumber": "0987654321"
+  },
+  "orderNotes": "Urgent delivery required."
+}
+
+###
+### Create a new Order
+POST {{url}}/api/consumer/orders
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+  "total_order_amount": 82,
+  "total_sp_amount": 82,
+  "total_tax_amount": 14.76,
+  "products": [
+    {
+      "product_id": "65bc9069caf694dd9f9520d5",
+      "product_name": "Coca-Cola Soft Drink",
+      "quantity": 2,
+      "unit_sp": 40,
+      "hsn": "212673893",
+      "tax_amount": 14.76,
+      "subtotal": 82
+    }
+  ],
+  "currency": "INR",
+  "shipping": {
+    "name": "James Smith",
+    "address": "789, Street Name, City, Country",
+    "trackingNumber": "1357924680"
+  },
+  "orderNotes": "Please handle with care."
+}
+
+
+### Positive Test Cases ###
+
+# Create Order with Mixed Products
+POST {{url}}/api/consumer/orders
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+  "total_order_amount": 394,  
+  "total_sp_amount": 394, 
+  "total_tax_amount": 24.95,  
+  "products": [
+    {
+      "product_id": "65b22224c6e6054537d42cc8",
+      "product_name": "Amul Taaza Toned Fresh Milk",
+      "quantity": 2,
+      "unit_sp": 27,
+      "hsn": "04012000",
+      "tax_amount": 0,
+      "subtotal": 54
+    },
+    {
+      "product_id": "65bc8367caf694dd9f951d5d",
+      "product_name": "Dettol Hand Sanitizer",
+      "quantity": 2,
+      "unit_sp": 25,
+      "hsn": "212673893",
+      "tax_amount": 0,
+      "subtotal": 50
+    },
+    {
+      "product_id": "65bc9375caf694dd9f9523f4",
+      "product_name": "Odonil Lavender Mist Room Freshener",
+      "quantity": 1,
+      "unit_sp": 100,
+      "hsn": "33079090",
+      "tax_amount": 5,
+      "subtotal": 105
+    },
+    {
+      "product_id": "65bc97cecaf694dd9f9537cf",
+      "product_name": "Lays Magic Masala Potato Chips",
+      "quantity": 3,
+      "unit_sp": 20,
+      "hsn": "21069099",
+      "tax_amount": 10.8,
+      "subtotal": 60
+    },
+    {
+      "product_id": "65bcd7b0caf694dd9f9586b9",
+      "product_name": "Red Bull Energy Drink",
+      "quantity": 1,
+      "unit_sp": 125,
+      "hsn": "22021090",
+      "tax_amount": 9.15,
+      "subtotal": 125
+    }
+  ],
+  "currency": "INR",
+  "shipping": {
+    "name": "John Doe",
+    "address": "123, Street Name, City, Country",
+    "trackingNumber": "1234567890"
+  },
+  "orderNotes": "Please deliver ASAP."
+}
+
+###
+POST {{url}}/api/consumer/orders/660b91e4305f5476389f9242/payment
+Content-Type: application/json
+Authorization: Bearer {{token}}

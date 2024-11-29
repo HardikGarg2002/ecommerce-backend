@@ -1,0 +1,98 @@
+@url = http://localhost:6001
+# @url=https://productsbackend-dev-itpl.up.railway.app
+@token =eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NWZjM2Q2MmMwYzhlNmI1ZmM5ZWMyZjkiLCJpYXQiOjE3MTIwNTY5MTMsImV4cCI6MTcxNTYyMzMxM30.MRFnYsTxE7ASznutZQsK_dKl3rKJ2b-gnaQ6ESFnD3M
+@id = 660d0c07644d625c96ad51b9
+###
+POST {{url}}/api/consumer/orders/{{id}}/checkoutPayment
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+  "token":"tok_uc4nr4vbatgedahsmjdmdb5ppe"
+}
+
+###
+PATCH {{url}}/api/orders/65f425b582889947c36a4e8d/status
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+  "status":"SHIP"
+}
+
+### POST a new product
+POST {{url}}/api/consumer/orders
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+    "total_order_amount": 237,
+    "total_sp_amount": 207,
+    "total_tax_amount": 33.75,
+    "products": [
+    {
+        "product_id": "65b229bcc6e6054537d42cdb",
+        "product_name": "Yakult Probiotic Health Drink",
+      "quantity": 2,
+    "unit_sp": 90,
+      "hsn": "21069060",
+        "tax_amount": 32.4,
+      "subtotal": 180
+    },
+        {
+            "product_id": "65b104cc1713ac56c34b80f4",
+            "product_name": "DBAmul Taaza Toned Fresh Milk",
+            "quantity": 1,
+            "unit_sp": 27,
+            "hsn": "04011000",
+            "tax_amount": 1.35,
+            "subtotal": 27
+        }
+    ],
+    "other_charges": {
+        "handling_cost": 10,
+        "delivery_charges": 20
+    },
+    "discounts": {
+        "code": "No",
+    "amount": 0
+  },
+        "currency": "INR",
+        "shipping": {
+    "name": "Home",
+    "address": "Rk villa sector57",
+        "trackingNumber": "1234dd"
+    },
+    "orderNotes": "this is being delivered to shubham"
+}
+
+
+
+###
+GET {{url}}/api/consumer/orders/{{id}}
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+###
+GET {{url}}/api/consumer/orders
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+
+### 
+POST {{url}}/api/consumer/orders/rzp/webhook
+Content-Type: application/json
+
+{
+  "name":"hafhjkn",
+  "id":"dfjkds"
+}
+
+### 
+PATCH {{url}}/api/orders/{{id}}/status
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+  "status":"CANCEL"
+}

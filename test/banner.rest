@@ -1,0 +1,101 @@
+
+@url= http://localhost:6001
+# @url =https://audit-dev.up.railway.app/api
+@token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NWJiODdiMjgzZGE1OTRmODJjNzZhNmQiLCJpYXQiOjE3MDgzMzI0NjYsImV4cCI6MTcxMTg5ODg2Nn0.XkzmVb4w6BdqurNIYTYttp0SEdFu8bTrWFJJhCMreWA
+@id=65c5e42481e260f3dd2cdb77
+
+# 655dd0bcb1fcfce206c8a526
+# 655dd0edb1fcfce206c8a52c
+# 655dd0ffb1fcfce206c8a532
+###
+GET {{url}}
+
+###
+GET {{url}}/api/banners
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+###
+GET {{url}}/api/banners/{{id}}
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+###
+GET {{url}}/api/banners/search?searchText=
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+
+###
+POST {{url}}/api/banners
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+  "name": "mojhito",
+  "desc": "dietician recommendation",
+
+  "code": "mojhito",
+  "start_date": "2024-02-29T13:30:00.000Z",
+  "end_date": "2024-09-29T13:30:00.000Z",
+  "sort": 90,
+  "img_url": "https://example.com/orange.jpg",
+  "redirect_url": "https://example.com/orange.jpg",
+  "location": {
+    "type": "subcategory",
+    "code": "COLDCOFFEE"
+  }
+}
+
+
+###
+POST {{url}}/api/banners
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+  "name": "mojito",
+  "desc": "wellness consultant recommendation",
+  "code": "mojito",
+  "start_date": "2023-12-06T11:30:00Z",
+  "end_date": "2023-12-06T14:30:00Z",
+  "sort": 100,
+  "img_url": "https://example.com/lemon.jpg",
+  "redirect_url": "https://example.com/lemon.jpg",
+  "location": {
+    "type": "category",
+    "code": "fnv"
+  }
+}
+
+###
+GET {{url}}/api/banners/{{id}}
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+###
+PATCH {{url}}/api/banners/{{id}}
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+
+  
+   "name": "Grapes",
+    "reason":"i want to change"
+   }
+
+
+###
+PATCH {{url}}/api/banners/{{id}}/status
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+  
+    "is_active":true,
+    "reason":"i want to change"
+   }
+
+
+

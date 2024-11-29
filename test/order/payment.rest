@@ -1,0 +1,31 @@
+@url = http://localhost:6001
+@token =eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NWU3MjA3NGMzNTU3ZjBkMzFlYjA1YjkiLCJpYXQiOjE3MDk2NDU5NTksImV4cCI6MTcxMzIxMjM1OX0.7_OTGfp_7nmMrm3_ukQ0jRzAxTng4ogPnfMGpbQNiD0
+@id = 65e9b1b6373c951654f63108
+@rzpid = order_NjO8yrAjUsdaJI
+
+
+
+// ECOMM ORDER ID
+###
+POST {{url}}/api/consumer/payment
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+    "amount": 100,
+    "currency": "INR",
+    "orderId": "deb11" 
+}
+
+// GET payment based on raZORPAY ORDER ID
+###
+GET {{url}}/api/consumer/payment/rzp/{{rzpid}}
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+
+// GET payment based on payment ID
+###
+GET {{url}}/api/consumer/payment/{{id}}
+Content-Type: application/json
+Authorization: Bearer {{token}}

@@ -1,0 +1,76 @@
+
+@url= http://localhost:6001
+# @url =https://audit-dev.up.railway.app/api
+@token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NTA4MjdkZGRkM2Q5MjdiMzkwOTEwY2QiLCJpYXQiOjE3MDQ3ODU0MzgsImV4cCI6MTcwODM1MTgzOH0.sActscFHbfGnsI1QyehxdC42kLE5g0EbFCkq_jy-PaY
+@id=65953845518606e249e49e81
+###
+GET {{url}}
+
+###
+GET {{url}}/api/aliases
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+###
+GET {{url}}/api/aliases/search?searchText=ikk
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+###
+GET {{url}}/api/aliases/{{id}}
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+
+###
+POST {{url}}/api/aliases
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{   "name":" PETHA"
+    }
+
+
+###
+GET {{url}}/api/aliases/{{id}}
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+###
+GET {{url}}/api/aliases
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+###
+PATCH {{url}}/api/aliases/{{id}}
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+    "name": "",
+    "reason": "test reason"
+}
+###
+PATCH {{url}}/api/aliases/{{id}}/status
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+    "is_active":   true ,
+    "reason":"i wantss to update status"
+}
+
+###
+DELETE {{url}}/api/aliases/{{id}}
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+    
+    "reason":"i wantss to delete"
+}
+
+
+
+
+/////////            db.products.updateMany( { 'aliases': { $elemMatch: { $eq: new ObjectId("65953850518606e249e49e85") } } },      { $pull: { 'aliases': new ObjectId("65953850518606e249e49e85") } })      /////////////

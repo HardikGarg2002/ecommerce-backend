@@ -1,0 +1,59 @@
+
+@url= http://localhost:6001
+# @url =https://audit-dev.up.railway.app/api
+@token=  eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NTA3ZGI5N2RkM2Q5MjdiMzkwOTBmZmMiLCJpYXQiOjE3MDA5MjI0OTgsImV4cCI6MTcwNDQ4ODg5OH0.CmsSaWUvAnCKAWdi7pTDrc8i5bLe7vS8gDLKhjR620Y
+@id=65604351a46dfdc3c727eea8
+###
+GET {{url}}
+
+###
+GET {{url}}/api/stores
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+###
+GET {{url}}/api/stores/search?searchText=di
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+###
+POST {{url}}/api/stores
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{   "name":" mehan mart",
+    "code":"mehanmart",
+    "desc": "dimension of the<> product",
+    "city_key":"CHD",
+    "sort":50
+}
+
+
+###
+GET {{url}}/api/stores/{{id}}
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+
+###
+PATCH {{url}}/api/stores/{{id}}
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{   "name":"Easy day",
+    "desc": "Best store of the town",
+    "reason":"testing it out"
+        
+}  
+
+
+###
+PATCH {{url}}/api/stores/{{id}}/status
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+    "is_active":   true ,
+    "reason":"i want to test "   
+}
+
